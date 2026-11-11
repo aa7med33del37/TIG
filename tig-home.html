@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>مجموعة التجارة والصناعة | TIG</title>
+<meta name="description" content="مجموعة سعودية تعمل منذ قرابة نصف قرن في المقاولات وصناعة الألمنيوم وتقنية المعلومات والاستثمار.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600&family=Reem+Kufi:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#16202A;
+  --deep:#1C2833;
+  --steel:#2C3B48;
+  --line:rgba(199,208,214,.12);
+  --alu:#C7D0D6;
+  --text:#E6EBEE;
+  --muted:#93A2AD;
+  --sun:#E8C58E;
+  --sun-hot:#FFE2AE;
+  --sea:#6FB3AE;
+  --display:"Reem Kufi", "IBM Plex Sans Arabic", sans-serif;
+  --body:"IBM Plex Sans Arabic", system-ui, sans-serif;
+  --wrap:min(1240px, 100% - 3rem);
+  --ease:cubic-bezier(.2,.7,.1,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--night);
+  color:var(--text);
+  font-family:var(--body);
+  font-size:1.0625rem;
+  line-height:1.85;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+img,svg{display:block}
+::selection{background:var(--sun);color:var(--night)}
+:focus-visible{outline:2px solid var(--sun);outline-offset:4px;border-radius:4px}
+.wrap{width:var(--wrap);margin-inline:auto}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+/* ambient cursor light, whole page */
+.ambient{
+  position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(600px circle at var(--ax,50%) var(--ay,-20%), rgba(232,197,142,.06), transparent 60%);
+  transition:background .2s linear;
+}
+main,header,footer{position:relative;z-index:1}
+
+/* ---------- header ---------- */
+.nav{
+  position:fixed;top:0;inset-inline:0;z-index:50;
+  transition:background .5s var(--ease), border-color .5s, backdrop-filter .5s;
+  border-bottom:1px solid transparent;
+}
+.nav.is-solid{
+  background:rgba(22,32,42,.72);
+  backdrop-filter:blur(14px) saturate(1.2);
+  -webkit-backdrop-filter:blur(14px) saturate(1.2);
+  border-color:var(--line);
+}
+.nav-in{display:flex;align-items:center;gap:2rem;height:78px}
+.brand{display:flex;align-items:center;gap:.8rem}
+.brand-mark{width:38px;height:38px}
+.brand-text{display:flex;flex-direction:column;line-height:1.2}
+.brand-ar{font-family:var(--display);font-size:1.05rem;font-weight:600}
+.brand-en{font-size:.72rem;color:var(--muted);letter-spacing:.04em;direction:ltr;text-align:right}
+.nav-links{display:flex;gap:1.9rem;margin-inline-start:auto;list-style:none}
+.nav-links a{font-size:.95rem;color:var(--muted);position:relative;padding:.3rem 0;transition:color .3s}
+.nav-links a::after{
+  content:"";position:absolute;inset-inline:0;bottom:-2px;height:1px;
+  background:linear-gradient(90deg,transparent,var(--sun),transparent);
+  transform:scaleX(0);transition:transform .45s var(--ease);
+}
+.nav-links a:hover,.nav-links a:focus-visible{color:var(--text)}
+.nav-links a:hover::after,.nav-links a:focus-visible::after{transform:scaleX(1)}
+.nav-tools{display:flex;align-items:center;gap:1rem}
+.lang{font-size:.85rem;color:var(--muted);direction:ltr}
+.lang:hover{color:var(--text)}
+.btn{
+  --b:var(--sun);
+  display:inline-flex;align-items:center;gap:.6rem;
+  font-family:var(--body);font-weight:500;font-size:.95rem;
+  padding:.72rem 1.4rem;border-radius:999px;border:1px solid rgba(232,197,142,.45);
+  color:var(--sun);background:rgba(232,197,142,.04);
+  position:relative;overflow:hidden;cursor:pointer;
+  transition:color .4s, border-color .4s, box-shadow .4s, background .4s;
+}
+.btn:hover{border-color:var(--sun);box-shadow:0 0 0 4px rgba(232,197,142,.08),0 0 32px rgba(232,197,142,.25)}
+.btn-solid{background:var(--sun);color:var(--night);border-color:var(--sun)}
+.btn-solid:hover{background:var(--sun-hot);color:var(--night)}
+.btn-solid::before{
+  content:"";position:absolute;top:0;bottom:0;width:40%;left:-60%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,.55),transparent);
+  transform:skewX(-20deg);transition:left .8s var(--ease);
+}
+.btn-solid:hover::before{left:120%}
+.menu-btn{display:none;background:none;border:1px solid var(--line);color:var(--text);width:44px;height:44px;border-radius:12px;cursor:pointer}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;min-height:100svh;display:flex;align-items:flex-end;
+  padding:120px 0 0;overflow:hidden;isolation:isolate;
+}
+.hero-sky{
+  position:absolute;inset:0;z-index:-3;
+  background:
+    radial-gradient(120% 80% at 20% 110%, rgba(111,179,174,.10), transparent 60%),
+    radial-gradient(90% 70% at 15% 30%, rgba(232,197,142,.06), transparent 60%),
+    linear-gradient(180deg,#141D26 0%, var(--night) 60%, #18242E 100%);
+}
+.screen{
+  position:absolute;inset:0;z-index:-2;
+  -webkit-mask-image:linear-gradient(to left, transparent 0%, rgba(0,0,0,.25) 30%, #000 62%);
+          mask-image:linear-gradient(to left, transparent 0%, rgba(0,0,0,.25) 30%, #000 62%);
+}
+.bloom,.light,.frame{position:absolute;inset:0}
+.bloom{
+  background:radial-gradient(circle 520px at var(--lx,30%) var(--ly,60%), rgba(232,197,142,.30), rgba(111,179,174,.08) 55%, transparent 72%);
+  filter:blur(30px);
+  opacity:var(--rise,0);
+}
+.light{
+  --pat:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'%3E%3Cpath d='M48 14 82 48 48 82 14 48Z M24 24H72V72H24Z M0 -12 12 0 0 12 -12 0Z M96 -12 108 0 96 12 84 0Z M0 84 12 96 0 108 -12 96Z M96 84 108 96 96 108 84 96Z' fill='%23fff'/%3E%3C/svg%3E");
+  -webkit-mask-image:var(--pat);mask-image:var(--pat);
+  -webkit-mask-size:96px 96px;mask-size:96px 96px;
+  background:
+    radial-gradient(circle 380px at var(--lx,30%) var(--ly,60%), #FFF1D2 0%, rgba(255,226,174,.92) 14%, rgba(232,197,142,.55) 34%, rgba(111,179,174,.22) 58%, transparent 78%),
+    rgba(199,208,214,.045);
+  opacity:var(--rise,0);
+}
+.frame{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'%3E%3Cg fill='none' stroke='%23C7D0D6' stroke-opacity='.10' stroke-width='1'%3E%3Cpath d='M48 14 82 48 48 82 14 48Z M24 24H72V72H24Z'/%3E%3Ccircle cx='48' cy='48' r='15'/%3E%3C/g%3E%3Ccircle cx='48' cy='48' r='9' fill='%2316202A'/%3E%3Ccircle cx='48' cy='48' r='9' fill='none' stroke='%23E8C58E' stroke-opacity='.25'/%3E%3C/svg%3E");
+  background-size:96px 96px;
+}
+.dust{position:absolute;inset:0;z-index:-1;pointer-events:none}
+.hero-veil{
+  position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(180deg, transparent 55%, var(--night) 100%);
+}
+.hero-in{width:var(--wrap);margin-inline:auto;padding-bottom:3rem}
+.hero-copy{max-width:640px}
+.hero-kicker{
+  display:inline-flex;align-items:center;gap:.7rem;
+  color:var(--sun);font-size:.95rem;margin-bottom:1.6rem;
+}
+.hero-kicker i{width:34px;height:1px;background:linear-gradient(90deg,transparent,var(--sun))}
+.hero h1{
+  font-family:var(--display);font-weight:600;
+  font-size:clamp(2.6rem, 6.4vw, 5.6rem);
+  line-height:1.18;letter-spacing:0;
+  margin-bottom:1.6rem;
+}
+.line{display:block;overflow:hidden;padding-block:.06em}
+.line > span{display:block;transform:translateY(110%);transition:transform 1.3s var(--ease)}
+.line + .line > span{transition-delay:.15s}
+.is-in .line > span{transform:none}
+.hero h1 .glow{
+  background:linear-gradient(100deg, var(--alu) 0%, #fff 30%, var(--sun) 52%, var(--alu) 75%);
+  background-size:220% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+  animation:sheen 9s ease-in-out infinite;
+}
+@keyframes sheen{0%,100%{background-position:100% 0}50%{background-position:0 0}}
+.hero-lede{color:var(--muted);font-size:1.15rem;max-width:34em;margin-bottom:2.3rem}
+.fade-up{opacity:0;transform:translateY(16px);transition:opacity 1.1s var(--ease) .5s, transform 1.1s var(--ease) .5s}
+.is-in .fade-up{opacity:1;transform:none}
+.hero-cta{display:flex;gap:.9rem;flex-wrap:wrap}
+.hint{
+  position:absolute;left:3rem;top:50%;
+  font-size:.82rem;color:var(--muted);
+  display:flex;align-items:center;gap:.6rem;
+  opacity:0;transition:opacity 1s 2.4s;
+}
+.is-in .hint{opacity:.8}
+.hint b{width:8px;height:8px;border-radius:50%;background:var(--sun);box-shadow:0 0 12px var(--sun);animation:breathe 2.6s ease-in-out infinite}
+@keyframes breathe{50%{transform:scale(1.6);opacity:.5}}
+
+.facts{
+  margin-top:4.5rem;border-top:1px solid var(--line);
+  display:grid;grid-template-columns:repeat(4,1fr);
+}
+.fact{padding:1.6rem 0 1.4rem;padding-inline-end:1.5rem;position:relative}
+.fact + .fact{padding-inline-start:1.5rem;border-inline-start:1px solid var(--line)}
+.fact strong{
+  display:block;font-family:var(--display);font-weight:500;
+  font-size:clamp(1.9rem,3.2vw,2.6rem);line-height:1.1;color:var(--text);
+}
+.fact > span{font-size:.92rem;color:var(--muted)}
+.fact::before{
+  content:"";position:absolute;top:-1px;inset-inline-start:0;width:0;height:1px;
+  background:var(--sun);box-shadow:0 0 12px var(--sun);
+  transition:width 1.4s var(--ease);
+}
+.fact + .fact::before{inset-inline-start:1.5rem}
+.is-in .fact::before{width:48px}
+
+/* ---------- shared section ---------- */
+.sec{padding:clamp(5rem,11vw,9rem) 0;position:relative}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;margin-bottom:3.5rem}
+.sec-title{font-family:var(--display);font-weight:500;font-size:clamp(2rem,4vw,3.2rem);line-height:1.25}
+.sec-note{color:var(--muted);max-width:30em}
+.reveal{opacity:0;transform:translateY(24px);filter:blur(6px);transition:opacity 1s var(--ease),transform 1s var(--ease),filter 1s var(--ease)}
+.reveal.is-seen{opacity:1;transform:none;filter:none}
+
+/* ---------- about / vision ---------- */
+.about{display:grid;grid-template-columns:1fr 2.2fr;gap:4rem;align-items:start}
+.about-side{position:sticky;top:120px}
+.about-side h2{font-family:var(--display);font-weight:500;font-size:1.5rem;margin-bottom:1rem}
+.about-side p{color:var(--muted);font-size:1rem}
+.vision{
+  font-family:var(--display);font-weight:500;
+  font-size:clamp(1.8rem,3.6vw,3.1rem);line-height:1.55;
+}
+.vision .w{color:rgba(230,235,238,.16);transition:color .5s, text-shadow .5s}
+.vision .w.on{color:var(--text)}
+.vision .w.hot{color:var(--sun);text-shadow:0 0 28px rgba(232,197,142,.45)}
+.mission{margin-top:3rem;display:flex;gap:1.2rem;align-items:flex-start;color:var(--muted);max-width:36em}
+.mission svg{flex:none;width:28px;margin-top:.35rem}
+
+/* ---------- fields ---------- */
+.fields{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(2rem,5vw,5rem);align-items:stretch}
+.field-list{list-style:none;border-top:1px solid var(--line)}
+.field-btn{
+  width:100%;text-align:start;background:none;border:0;border-bottom:1px solid var(--line);
+  color:var(--muted);font-family:var(--display);font-weight:500;
+  font-size:clamp(1.35rem,2.4vw,1.95rem);
+  padding:1.15rem 0;cursor:pointer;display:flex;align-items:center;gap:1rem;
+  position:relative;transition:color .4s, padding .5s var(--ease);
+}
+.field-btn::before{
+  content:"";position:absolute;inset-inline-start:0;bottom:-1px;height:1px;width:0;
+  background:linear-gradient(to left,transparent,var(--sun));
+  transition:width .7s var(--ease);
+}
+[dir=rtl] .field-btn::before{background:linear-gradient(to left,var(--sun),transparent)}
+.field-btn .dot{width:8px;height:8px;border-radius:50%;background:var(--steel);transition:background .4s, box-shadow .4s}
+.field-btn:hover{color:var(--text)}
+.field-btn[aria-selected=true]{color:var(--text);padding-inline-start:.8rem}
+.field-btn[aria-selected=true]::before{width:100%}
+.field-btn[aria-selected=true] .dot{background:var(--sun);box-shadow:0 0 14px var(--sun)}
+.field-stage{
+  position:relative;border-radius:28px;overflow:hidden;
+  background:
+    radial-gradient(80% 70% at 50% 35%, rgba(232,197,142,.10), transparent 70%),
+    linear-gradient(160deg,#1F2C38,#18222C);
+  border:1px solid var(--line);
+  min-height:520px;display:flex;flex-direction:column;justify-content:flex-end;
+  padding:2.4rem;
+}
+.field-stage::after{
+  content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:32px 32px;opacity:.35;
+  -webkit-mask-image:radial-gradient(70% 60% at 50% 35%,#000,transparent);
+          mask-image:radial-gradient(70% 60% at 50% 35%,#000,transparent);
+}
+.field-art{position:absolute;top:2rem;left:50%;width:min(300px,70%);transform:translateX(-50%);z-index:1}
+.field-art svg{width:100%;height:auto;overflow:visible}
+.field-art path,.field-art circle,.field-art rect,.field-art line,.field-art polyline{
+  fill:none;stroke:var(--sun);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;
+  filter:drop-shadow(0 0 6px rgba(232,197,142,.55));
+}
+.field-art .soft{stroke:var(--alu);stroke-opacity:.35;filter:none}
+.field-art .draw{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.8s var(--ease) forwards}
+.field-art .draw:nth-child(2){animation-delay:.12s}
+.field-art .draw:nth-child(3){animation-delay:.24s}
+.field-art .draw:nth-child(4){animation-delay:.36s}
+.field-art .draw:nth-child(5){animation-delay:.48s}
+.field-art .draw:nth-child(6){animation-delay:.6s}
+.field-art .draw:nth-child(n+7){animation-delay:.72s}
+@keyframes draw{to{stroke-dashoffset:0}}
+.field-copy{position:relative;z-index:2}
+.field-copy h3{font-family:var(--display);font-weight:500;font-size:1.6rem;margin-bottom:.5rem}
+.field-copy p{color:var(--muted);max-width:30em}
+.field-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.2rem}
+.field-tags span{font-size:.85rem;padding:.3rem .85rem;border-radius:999px;border:1px solid var(--line);color:var(--alu);background:rgba(199,208,214,.03)}
+.field-copy.swap{animation:swap .7s var(--ease)}
+@keyframes swap{from{opacity:0;transform:translateY(10px)}}
+
+/* ---------- products band ---------- */
+.band{
+  border-block:1px solid var(--line);
+  padding:2.2rem 0;overflow:hidden;position:relative;
+  background:linear-gradient(90deg,var(--night),transparent 15%,transparent 85%,var(--night));
+}
+.band-track{display:flex;width:max-content;animation:slide 60s linear infinite}
+.band:hover .band-track{animation-play-state:paused}
+.band-group{display:flex;align-items:center;gap:3rem;padding-inline-end:3rem}
+.band-item{
+  font-family:var(--display);font-size:clamp(1.6rem,3vw,2.6rem);font-weight:500;white-space:nowrap;
+  color:transparent;-webkit-text-stroke:1px rgba(199,208,214,.35);
+  transition:color .4s, -webkit-text-stroke-color .4s, text-shadow .4s;
+}
+.band-item:hover{color:var(--sun);-webkit-text-stroke-color:transparent;text-shadow:0 0 30px rgba(232,197,142,.5)}
+.band-star{width:18px;height:18px;flex:none;opacity:.6}
+@keyframes slide{to{transform:translateX(50%)}}
+
+/* ---------- companies ---------- */
+.plates{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.plate{
+  --mx:50%;--my:0%;
+  position:relative;border-radius:22px;padding:2rem 1.9rem 1.8rem;min-height:330px;
+  display:flex;flex-direction:column;
+  background:
+    radial-gradient(420px circle at var(--mx) var(--my), rgba(255,226,174,.16), transparent 45%),
+    repeating-linear-gradient(90deg, rgba(255,255,255,.018) 0 1px, transparent 1px 3px),
+    linear-gradient(165deg,#2A3743 0%,#212D38 45%,#1B2630 100%);
+  border:1px solid rgba(199,208,214,.14);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.07), 0 30px 60px -30px rgba(0,0,0,.6);
+  overflow:hidden;transition:transform .6s var(--ease), border-color .5s;
+}
+.plate::before{
+  content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;pointer-events:none;
+  background:radial-gradient(260px circle at var(--mx) var(--my), rgba(232,197,142,.85), transparent 60%);
+  -webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude;
+  opacity:0;transition:opacity .4s;
+}
+.plate:hover{transform:translateY(-6px)}
+.plate:hover::before{opacity:1}
+.bolts{position:absolute;inset:14px;pointer-events:none}
+.bolts i{position:absolute;width:6px;height:6px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#8A99A5,#3A4752)}
+.bolts i:nth-child(1){top:0;right:0}.bolts i:nth-child(2){top:0;left:0}
+.bolts i:nth-child(3){bottom:0;right:0}.bolts i:nth-child(4){bottom:0;left:0}
+.plate-logo{
+  width:64px;height:64px;border-radius:16px;display:grid;place-items:center;
+  background:rgba(22,32,42,.6);border:1px solid var(--line);
+  font-family:var(--display);font-weight:600;color:var(--sun);font-size:1.05rem;direction:ltr;
+  margin-bottom:auto;
+}
+.plate h3{font-family:var(--display);font-weight:500;font-size:1.45rem;line-height:1.4;margin:2.2rem 0 .3rem}
+.plate .en{font-size:.86rem;color:var(--muted);direction:ltr;text-align:right;margin-bottom:.9rem}
+.plate p{font-size:.97rem;color:var(--muted)}
+.plate-link{
+  margin-top:1.4rem;padding-top:1.1rem;border-top:1px solid var(--line);
+  display:flex;justify-content:space-between;align-items:center;color:var(--alu);font-size:.92rem;
+}
+.plate-link span{direction:ltr}
+.plate-link svg{width:18px;transition:transform .5s var(--ease)}
+.plate:hover .plate-link{color:var(--sun)}
+.plate:hover .plate-link svg{transform:translate(-4px,-4px)}
+
+/* ---------- word ---------- */
+.word{
+  position:relative;border-radius:32px;overflow:hidden;
+  padding:clamp(3rem,7vw,6rem) clamp(1.6rem,6vw,6rem);
+  background:linear-gradient(135deg,#1E2A35,#17212B);
+  border:1px solid var(--line);
+}
+.word::before{
+  content:"";position:absolute;inset:0;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'%3E%3Cg fill='none' stroke='%23E8C58E' stroke-opacity='.10'%3E%3Cpath d='M48 14 82 48 48 82 14 48Z M24 24H72V72H24Z'/%3E%3C/g%3E%3C/svg%3E");
+  background-size:96px;
+  -webkit-mask-image:radial-gradient(60% 90% at 0% 50%,#000,transparent 70%);
+          mask-image:radial-gradient(60% 90% at 0% 50%,#000,transparent 70%);
+}
+.word-beam{
+  position:absolute;top:-40%;left:-10%;width:60%;height:180%;
+  background:linear-gradient(100deg,transparent 30%,rgba(232,197,142,.10) 50%,transparent 70%);
+  transform:rotate(12deg);animation:beam 12s ease-in-out infinite;pointer-events:none;
+}
+@keyframes beam{0%,100%{transform:translateX(0) rotate(12deg)}50%{transform:translateX(30%) rotate(12deg)}}
+.word blockquote{position:relative;max-width:46rem}
+.word blockquote p{font-family:var(--display);font-weight:500;font-size:clamp(1.7rem,3.4vw,2.8rem);line-height:1.55}
+.word .mark{width:54px;margin-bottom:1.6rem;opacity:.9}
+.word footer{margin-top:2rem;display:flex;align-items:center;gap:1rem;color:var(--muted)}
+.word footer i{width:48px;height:1px;background:var(--sun)}
+
+/* ---------- presence ---------- */
+.presence{display:grid;grid-template-columns:1.25fr 1fr;gap:3rem;align-items:center}
+.map{position:relative}
+.map svg{width:100%;height:auto}
+.map .dot{fill:#C7D0D6;opacity:.16}
+.map .dot.lit{fill:var(--sun)}
+.map .arc{fill:none;stroke:rgba(232,197,142,.25);stroke-width:1}
+.map .pulse{fill:none;stroke:var(--sun-hot);stroke-width:2.2;stroke-linecap:round;stroke-dasharray:0.07 1;filter:drop-shadow(0 0 6px var(--sun))}
+.map .city-core{fill:var(--sun-hot)}
+.map .city-halo{fill:url(#halo)}
+.map .ring{fill:none;stroke:var(--sun);stroke-width:1;transform-box:fill-box;transform-origin:center;animation:ring 3s ease-out infinite}
+.map .ring.r2{animation-delay:1.5s}
+@keyframes ring{from{transform:scale(.3);opacity:.9}to{transform:scale(2.6);opacity:0}}
+.map text{fill:var(--text);font-family:var(--display);font-size:15px}
+.map .sub{fill:var(--muted);font-family:var(--body);font-size:11px}
+.map text{paint-order:stroke;stroke:var(--night);stroke-width:4px;stroke-linejoin:round}
+.city.on .city-core{fill:#fff}
+.offices{display:flex;flex-direction:column;gap:1rem}
+.office{
+  border:1px solid var(--line);border-radius:20px;padding:1.4rem 1.5rem;
+  background:rgba(28,40,51,.5);cursor:default;
+  transition:border-color .4s, background .4s, transform .5s var(--ease);
+}
+.office:hover,.office.on{border-color:rgba(232,197,142,.5);background:rgba(232,197,142,.05)}
+.office-top{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin-bottom:.4rem}
+.office h3{font-family:var(--display);font-weight:500;font-size:1.3rem}
+.office .tag{font-size:.8rem;color:var(--sea)}
+.office address{font-style:normal;color:var(--muted);font-size:.95rem;line-height:1.7}
+.phones{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;margin-top:.6rem;font-size:.95rem}
+.phones a{direction:ltr;color:var(--alu);border-bottom:1px dashed rgba(199,208,214,.25)}
+.phones a:hover{color:var(--sun);border-color:var(--sun)}
+
+/* ---------- cta ---------- */
+.cta{text-align:center;position:relative;overflow:hidden}
+.cta-sun{
+  position:absolute;left:50%;bottom:-420px;width:900px;height:600px;transform:translateX(-50%);
+  background:radial-gradient(closest-side, rgba(255,226,174,.45), rgba(232,197,142,.18) 45%, rgba(111,179,174,.06) 70%, transparent);
+  filter:blur(10px);pointer-events:none;animation:sunbreath 8s ease-in-out infinite;
+}
+@keyframes sunbreath{50%{transform:translateX(-50%) scale(1.08);opacity:.8}}
+.cta h2{font-family:var(--display);font-weight:500;font-size:clamp(2.2rem,5.4vw,4.4rem);line-height:1.3;margin-bottom:1.2rem}
+.cta p{color:var(--muted);max-width:32em;margin:0 auto 2.4rem}
+.cta .hero-cta{justify-content:center}
+
+/* ---------- footer ---------- */
+.foot{border-top:1px solid var(--line);padding:3.5rem 0 2rem;color:var(--muted);font-size:.93rem}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:2rem;margin-bottom:3rem}
+.foot h4{font-family:var(--display);font-weight:500;color:var(--text);font-size:1.05rem;margin-bottom:.8rem}
+.foot ul{list-style:none;display:grid;gap:.35rem}
+.foot a:hover{color:var(--sun)}
+.foot-bottom{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:1.5rem;font-size:.85rem}
+
+/* ---------- responsive ---------- */
+@media (max-width:1020px){
+  .nav-links{display:none}
+  .nav-tools{margin-inline-start:auto}
+  .menu-btn{display:grid;place-items:center}
+  .nav.open .nav-links{
+    display:flex;flex-direction:column;position:absolute;top:78px;inset-inline:0;
+    background:rgba(22,32,42,.96);backdrop-filter:blur(14px);padding:1.5rem;gap:1rem;border-bottom:1px solid var(--line);
+  }
+  .about,.fields,.presence{grid-template-columns:1fr}
+  .about-side{position:static}
+  .plates{grid-template-columns:1fr}
+  .plate{min-height:0}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .hint{display:none}
+}
+@media (max-width:640px){
+  .nav-tools .btn{display:none}
+  .facts{grid-template-columns:1fr 1fr}
+  .fact:nth-child(3){border-inline-start:0;padding-inline-start:0}
+  .fact:nth-child(3)::before{inset-inline-start:0}
+  .fact:nth-child(n+3){border-top:1px solid var(--line)}
+  .screen{-webkit-mask-image:linear-gradient(to bottom, #000 0%, rgba(0,0,0,.5) 26%, transparent 42%);mask-image:linear-gradient(to bottom, #000 0%, rgba(0,0,0,.5) 26%, transparent 42%)}
+  .hero{padding-top:38vh}
+  .brand-ar{font-size:.92rem;white-space:nowrap}
+  .brand-mark{width:32px;height:32px}
+  .field-stage{min-height:0;padding:1.6rem}
+  .field-art{position:relative;top:auto;left:auto;transform:none;width:200px;margin:0 auto 1.6rem}
+  .map text{font-size:24px}
+  .map .sub{font-size:17px}
+  .sec-head{flex-direction:column;align-items:flex-start}
+  .foot-grid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .line > span,.fade-up,.reveal{transform:none;opacity:1;filter:none}
+  .band-track{transform:none}
+}
+</style>
+</head>
+<body>
+<div class="ambient" aria-hidden="true"></div>
+
+<!-- shared symbol: 8-point star -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="star" viewBox="0 0 100 100">
+      <path d="M50 4 96 50 50 96 4 50Z M17.5 17.5H82.5V82.5H17.5Z" fill="none" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/>
+      <circle cx="50" cy="50" r="12" fill="currentColor"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-in">
+    <a class="brand" href="#top" aria-label="مجموعة التجارة والصناعة، الصفحة الرئيسية">
+      <svg class="brand-mark" style="color:var(--sun)"><use href="#star"/></svg>
+      <span class="brand-text">
+        <span class="brand-ar">مجموعة التجارة والصناعة</span>
+        <span class="brand-en">Trading &amp; Industrial Group</span>
+      </span>
+    </a>
+    <ul class="nav-links" id="links">
+      <li><a href="#about">من نحن</a></li>
+      <li><a href="#fields">مجالاتنا</a></li>
+      <li><a href="#companies">شركاتنا</a></li>
+      <li><a href="#word">كلمة الإدارة</a></li>
+      <li><a href="#offices">فروعنا</a></li>
+    </ul>
+    <div class="nav-tools">
+      <a class="lang" href="#" lang="en">English</a>
+      <a class="btn" href="#contact">تواصل معنا</a>
+      <button class="menu-btn" id="menuBtn" aria-label="القائمة" aria-expanded="false" aria-controls="links">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 6h14M3 10h14M7 14h10"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-sky"></div>
+    <div class="screen" aria-hidden="true">
+      <div class="bloom"></div>
+      <div class="light"></div>
+      <div class="frame"></div>
+    </div>
+    <canvas class="dust" id="dust" aria-hidden="true"></canvas>
+    <div class="hero-veil"></div>
+
+    <div class="hero-in">
+      <div class="hero-copy">
+        <p class="hero-kicker fade-up"><i></i>جدة · الرياض · الدمام</p>
+        <h1>
+          <span class="line"><span>نرتقي بالصناعة</span></span>
+          <span class="line"><span class="glow">إلى مستوى جديد</span></span>
+        </h1>
+        <p class="hero-lede fade-up">مجموعة سعودية تعمل منذ قرابة نصف قرن في المقاولات وصناعة الألمنيوم وتقنية المعلومات والاستثمار، وتشارك في مشاريع حكومية وخاصة في أنحاء المملكة.</p>
+        <div class="hero-cta fade-up">
+          <a class="btn btn-solid" href="#fields">استكشف مجالاتنا</a>
+          <a class="btn" href="#companies">تعرّف على شركاتنا</a>
+        </div>
+      </div>
+
+      <div class="facts" id="facts">
+        <div class="fact"><strong><span data-count="50">٠</span> عامًا</strong><span>من العمل في المملكة تقريبًا</span></div>
+        <div class="fact"><strong data-count="6">٠</strong><span>قطاعات صناعية وخدمية</span></div>
+        <div class="fact"><strong data-count="3">٠</strong><span>شركات تابعة</span></div>
+        <div class="fact"><strong data-count="3">٠</strong><span>مكاتب في ثلاث مدن</span></div>
+      </div>
+    </div>
+    <p class="hint" aria-hidden="true"><b></b>حرّك المؤشر لتُضيء المشربية</p>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="sec" id="about">
+    <div class="wrap about">
+      <div class="about-side reveal">
+        <h2>من نحن</h2>
+        <p>بدأت المجموعة بمشروع واحد، ونمت إلى مجموعة شركات تنفّذ مشاريع حكومية وخاصة كبرى، وتُعدّ كل منها من الرائدات في مجالها.</p>
+      </div>
+      <div>
+        <p class="vision" id="vision">رؤيتنا أن نصنع مفهومًا جديدًا للخدمات، بالمشاركة الفاعلة في مشاريع البناء في المملكة العربية السعودية، بأسعار منافسة وجودة متميزة.</p>
+        <div class="mission reveal">
+          <svg viewBox="0 0 100 100" style="color:var(--sea)"><use href="#star"/></svg>
+          <p>رسالتنا: الارتقاء بالصناعة إلى مستوى جديد، عبر التصنيع والتقنية والاستثمار والخدمات الهندسية تحت مظلة واحدة.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FIELDS -->
+  <section class="sec" id="fields" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2 class="sec-title">مجالات عملنا</h2>
+        <p class="sec-note">أنشطة متنوعة ومترابطة، من مصنع الخرسانة إلى أنظمة المعلومات. اختر مجالًا لتتعرّف عليه.</p>
+      </div>
+      <div class="fields">
+        <ul class="field-list reveal" role="tablist" aria-label="مجالات العمل" id="fieldList"></ul>
+        <div class="field-stage reveal" role="tabpanel" id="fieldStage" aria-live="polite">
+          <div class="field-art" id="fieldArt" aria-hidden="true"></div>
+          <div class="field-copy" id="fieldCopy"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS BAND -->
+  <div class="band" aria-label="منتجاتنا وخدماتنا">
+    <div class="band-track" id="band"></div>
+  </div>
+
+  <!-- COMPANIES -->
+  <section class="sec" id="companies">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2 class="sec-title">شركاتنا واستثماراتنا</h2>
+        <p class="sec-note">ثلاث شركات تحمل خبرة المجموعة، لكل منها تخصّصها وموقعها الخاص.</p>
+      </div>
+      <div class="plates">
+        <a class="plate reveal" href="https://www.tmal.com" target="_blank" rel="noopener">
+          <div class="bolts"><i></i><i></i><i></i><i></i></div>
+          <div class="plate-logo">TIG</div>
+          <h3>تيج العربية المحدودة</h3>
+          <p class="en">TIG-Arabian Ltd.</p>
+          <p>المقاولات والإنشاءات والأعمال الكهروميكانيكية للمشاريع الحكومية والخاصة.</p>
+          <div class="plate-link"><span>tmal.com</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M17 7 7 17M8 7h9v9"/></svg></div>
+        </a>
+        <a class="plate reveal" href="https://www.alupco.com" target="_blank" rel="noopener" style="transition-delay:.1s">
+          <div class="bolts"><i></i><i></i><i></i><i></i></div>
+          <div class="plate-logo">ALU</div>
+          <h3>شركة منتجات الألمنيوم المحدودة</h3>
+          <p class="en">Aluminium Products Co. Ltd. — ALUPCO</p>
+          <p>قطاعات ومنتجات الألمنيوم للواجهات والمباني والاستخدامات الصناعية.</p>
+          <div class="plate-link"><span>alupco.com</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M17 7 7 17M8 7h9v9"/></svg></div>
+        </a>
+        <a class="plate reveal" href="https://www.tig-tesco.com" target="_blank" rel="noopener" style="transition-delay:.2s">
+          <div class="bolts"><i></i><i></i><i></i><i></i></div>
+          <div class="plate-logo">TESCO</div>
+          <h3>تيج تيسكو العالمية المحدودة</h3>
+          <p class="en">TIG-Tesco International Ltd.</p>
+          <p>حلول تقنية المعلومات وأنظمة المعلومات ومعالجة البيانات.</p>
+          <div class="plate-link"><span>tig-tesco.com</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M17 7 7 17M8 7h9v9"/></svg></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MANAGEMENT WORD -->
+  <section class="sec" id="word" style="padding-top:0">
+    <div class="wrap">
+      <figure class="word reveal">
+        <div class="word-beam"></div>
+        <blockquote>
+          <svg class="mark" viewBox="0 0 100 100" style="color:var(--sun)"><use href="#star"/></svg>
+          <p>من مشروع واحد إلى مجموعة من المشاريع الكبرى، وطموحنا اليوم لا يقف عند التوسع المحلي والإقليمي، بل يمتد إلى العالمية.</p>
+        </blockquote>
+        <footer><i></i>كلمة الإدارة</footer>
+      </figure>
+    </div>
+  </section>
+
+  <!-- OFFICES -->
+  <section class="sec" id="offices" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <h2 class="sec-title">حاضرون في ثلاث مدن</h2>
+        <p class="sec-note">من ساحل البحر الأحمر إلى الخليج العربي، مكاتبنا قريبة من مشاريعكم.</p>
+      </div>
+      <div class="presence">
+        <div class="map reveal" id="map"></div>
+        <div class="offices">
+          <article class="office reveal" data-city="jed">
+            <div class="office-top"><h3>جدة</h3><span class="tag">المقر الرئيسي</span></div>
+            <address>7939-8001 شارع عثمان بن عفان، الشرفية، جدة 22234<br>ص.ب 2500، جدة 21451</address>
+            <div class="phones"><a href="tel:+966126531680">+966 12 653 1680</a><a href="tel:+966126519168">+966 12 651 9168</a></div>
+          </article>
+          <article class="office reveal" data-city="ruh">
+            <div class="office-top"><h3>الرياض</h3><span class="tag">فرع</span></div>
+            <address>الطريق الدائري الشرقي، حي الربوة، الرياض 14211<br>ص.ب 3445، الرياض 11471</address>
+            <div class="phones"><a href="tel:+966114960708">+966 11 496 0708</a><a href="tel:+966114967811">+966 11 496 7811</a></div>
+          </article>
+          <article class="office reveal" data-city="dmm">
+            <div class="office-top"><h3>الدمام</h3><span class="tag">فرع</span></div>
+            <address>شارع الملك عبدالعزيز، العمامرة، الدمام 32415<br>ص.ب 647، الدمام 31421</address>
+            <div class="phones"><a href="tel:+966138338600">+966 13 833 8600</a><a href="tel:+966138338487">+966 13 833 8487</a></div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="sec cta" id="contact">
+    <div class="cta-sun" aria-hidden="true"></div>
+    <div class="wrap reveal" style="position:relative">
+      <h2>لنبنِ المرحلة القادمة معًا</h2>
+      <p>لديكم مشروع إنشائي أو صناعي أو تقني؟ راسلونا وسيتواصل معكم الفريق المختص.</p>
+      <div class="hero-cta">
+        <a class="btn btn-solid" href="mailto:info@tig.sa">راسلنا على info@tig.sa</a>
+        <a class="btn" href="tel:+966126531680">اتصل بالمقر الرئيسي</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="#top" style="margin-bottom:1rem">
+          <svg class="brand-mark" style="color:var(--sun)"><use href="#star"/></svg>
+          <span class="brand-text"><span class="brand-ar">مجموعة التجارة والصناعة</span><span class="brand-en">Trading &amp; Industrial Group</span></span>
+        </a>
+        <p style="max-width:24em">مجموعة شركات سعودية في المقاولات والصناعة والتقنية والاستثمار.</p>
+      </div>
+      <div>
+        <h4>المجموعة</h4>
+        <ul><li><a href="#about">من نحن</a></li><li><a href="#fields">مجالاتنا</a></li><li><a href="#word">كلمة الإدارة</a></li></ul>
+      </div>
+      <div>
+        <h4>شركاتنا</h4>
+        <ul><li><a href="https://www.tmal.com" target="_blank" rel="noopener">تيج العربية</a></li><li><a href="https://www.alupco.com" target="_blank" rel="noopener">ألوبكو</a></li><li><a href="https://www.tig-tesco.com" target="_blank" rel="noopener">تيج تيسكو</a></li></ul>
+      </div>
+      <div>
+        <h4>تواصل</h4>
+        <ul><li><a href="mailto:info@tig.sa" style="direction:ltr;display:inline-block">info@tig.sa</a></li><li><a href="tel:+966126531680" style="direction:ltr;display:inline-block">+966 12 653 1680</a></li><li>جدة · الرياض · الدمام</li></ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© <span id="year">2026</span> مجموعة التجارة والصناعة. جميع الحقوق محفوظة.</span>
+      <span>تصميم مقترح للصفحة الرئيسية</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const ar = n => Number(n).toLocaleString('ar-SA');
+  document.getElementById('year').textContent = ar(new Date().getFullYear()).replace(/٬/g,'');
+
+  /* ---------- nav ---------- */
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('is-solid', scrollY > 40);
+  addEventListener('scroll', onScroll, {passive:true}); onScroll();
+  const menuBtn = document.getElementById('menuBtn');
+  menuBtn.addEventListener('click', () => {
+    const open = nav.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open);
+  });
+  document.querySelectorAll('#links a').forEach(a => a.addEventListener('click', () => {nav.classList.remove('open');menuBtn.setAttribute('aria-expanded', false)}));
+
+  /* ---------- ambient light ---------- */
+  const amb = document.querySelector('.ambient');
+  addEventListener('pointermove', e => {
+    amb.style.setProperty('--ax', e.clientX + 'px');
+    amb.style.setProperty('--ay', e.clientY + 'px');
+  }, {passive:true});
+
+  /* ---------- hero: mashrabiya sun ---------- */
+  const hero = document.getElementById('hero');
+  const screen = hero.querySelector('.screen');
+  let W = hero.clientWidth, H = hero.clientHeight;
+  let target = {x: W*0.28, y: H*(W<640?0.16:0.62)}, pos = {x: W*0.28, y: H*1.15};
+  let rise = 0, pointerActive = false, lastMove = 0, t0 = performance.now();
+  hero.addEventListener('pointermove', e => {
+    const r = hero.getBoundingClientRect();
+    target.x = e.clientX - r.left; target.y = e.clientY - r.top;
+    pointerActive = true; lastMove = performance.now();
+  });
+  hero.addEventListener('pointerleave', () => pointerActive = false);
+  addEventListener('resize', () => {W = hero.clientWidth; H = hero.clientHeight; sizeDust();});
+
+  /* dust motes */
+  const cv = document.getElementById('dust'), cx = cv.getContext('2d');
+  const DPR = Math.min(devicePixelRatio || 1, 2);
+  let motes = [];
+  function sizeDust(){
+    cv.width = W*DPR; cv.height = H*DPR; cv.style.width = W+'px'; cv.style.height = H+'px';
+    cx.setTransform(DPR,0,0,DPR,0,0);
+    const n = Math.round(Math.min(140, W*H/9000));
+    motes = Array.from({length:n}, () => ({
+      x: Math.random()*W, y: Math.random()*H,
+      r: Math.random()*1.4 + .3, s: Math.random()*.25 + .05,
+      p: Math.random()*Math.PI*2
+    }));
+  }
+  sizeDust();
+
+  function frame(now){
+    const t = (now - t0)/1000;
+    rise = Math.min(1, rise + (reduce ? 1 : 0.012));
+    if (!pointerActive || now - lastMove > 4000){
+      // idle: the sun drifts slowly like daylight across the screen
+      const narrow = W < 640;
+      target.x = W*((narrow ? 0.5 : 0.24) + (narrow ? 0.28 : 0.12)*Math.sin(t*0.18));
+      target.y = narrow ? H*(0.16 + 0.06*Math.cos(t*0.13)) : H*(0.52 + 0.14*Math.cos(t*0.13));
+    }
+    const k = reduce ? 1 : 0.06;
+    pos.x += (target.x - pos.x)*k; pos.y += (target.y - pos.y)*k;
+    screen.style.setProperty('--lx', pos.x + 'px');
+    screen.style.setProperty('--ly', pos.y + 'px');
+    screen.style.setProperty('--rise', rise.toFixed(3));
+
+    cx.clearRect(0,0,W,H);
+    if (!reduce){
+      for (const m of motes){
+        m.y -= m.s; m.x += Math.sin(t*.4 + m.p)*.15;
+        if (m.y < -5){ m.y = H + 5; m.x = Math.random()*W; }
+        const d = Math.hypot(m.x - pos.x, m.y - pos.y);
+        const a = Math.max(0, 1 - d/420) * .85 * rise;
+        if (a < .02) continue;
+        cx.beginPath(); cx.arc(m.x, m.y, m.r, 0, Math.PI*2);
+        cx.fillStyle = `rgba(255,230,185,${a})`; cx.fill();
+      }
+    }
+    if (!reduce || rise < 1) requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+  requestAnimationFrame(() => setTimeout(() => hero.classList.add('is-in'), 120));
+
+  /* counters */
+  const counted = new WeakSet();
+  function countUp(el){
+    if (counted.has(el)) return; counted.add(el);
+    const end = +el.dataset.count, dur = reduce ? 0 : 1800, s = performance.now();
+    const tick = n => {
+      const p = dur ? Math.min(1, (n - s)/dur) : 1;
+      el.textContent = ar(Math.round(end * (1 - Math.pow(1-p, 3))));
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+  setTimeout(() => document.querySelectorAll('[data-count]').forEach(countUp), 900);
+
+  /* ---------- reveals ---------- */
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting){ e.target.classList.add('is-seen'); io.unobserve(e.target); }
+  }), {threshold:.15, rootMargin:'0px 0px -8% 0px'});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  /* ---------- vision words light up on scroll ---------- */
+  const vision = document.getElementById('vision');
+  const words = vision.textContent.trim().split(/\s+/);
+  vision.innerHTML = words.map(w => `<span class="w">${w}</span>`).join(' ');
+  const ws = [...vision.querySelectorAll('.w')];
+  const hotWords = new Set(['مفهومًا','جديدًا','للخدمات،']);
+  function lightWords(){
+    const r = vision.getBoundingClientRect();
+    const p = reduce ? 1 : Math.min(1, Math.max(0, (innerHeight*0.85 - r.top) / (r.height + innerHeight*0.35)));
+    const lit = Math.round(p * ws.length);
+    ws.forEach((w,i) => {
+      w.classList.toggle('on', i < lit);
+      w.classList.toggle('hot', i < lit && hotWords.has(w.textContent));
+    });
+  }
+  addEventListener('scroll', lightWords, {passive:true}); lightWords();
+
+  /* ---------- fields ---------- */
+  const fields = [
+    {name:'المقاولات', text:'تنفيذ مشاريع البناء والمقاولات الكهروميكانيكية، مدعومة بتصنيع الخرسانة مسبقة الصب وألواح البوليسترين داخل المجموعة.', tags:['إنشاء المباني','مقاولات كهروميكانيكية','خرسانة مسبقة الصب'],
+      art:`<path class="soft" d="M20 170 100 210 180 170"/>
+           <path class="draw" pathLength="1" d="M30 150 100 185 170 150 100 115Z"/>
+           <path class="draw" pathLength="1" d="M30 150V162L100 197 170 162V150"/>
+           <path class="draw" pathLength="1" d="M45 118 100 145 155 118 100 91Z"/>
+           <path class="draw" pathLength="1" d="M45 118V130L100 157 155 130V118"/>
+           <path class="draw" pathLength="1" d="M70 96V30L130 0V66"/>
+           <path class="draw" pathLength="1" d="M82 40 94 34M106 28 118 22M82 62 94 56M106 50 118 44"/>`},
+    {name:'صناعة الألمنيوم', text:'إنتاج قطاعات ومنتجات الألمنيوم للواجهات والنوافذ والمباني والاستخدامات الصناعية.', tags:['قطاعات مبثوقة','واجهات','منتجات معمارية'],
+      art:`<path class="soft" d="M60 40 100 20 M140 40 180 20 M140 160 180 140"/>
+           <path class="draw" pathLength="1" d="M40 60H140V82H118V118H140V140H40V118H62V82H40Z"/>
+           <path class="draw" pathLength="1" d="M40 60 80 40H180L140 60"/>
+           <path class="draw" pathLength="1" d="M180 40V62H158M140 140 180 120V98H158"/>
+           <path class="draw" pathLength="1" d="M76 92H104V108H76Z"/>
+           <path class="draw" pathLength="1" d="M20 175H180"/>`},
+    {name:'تقنية المعلومات', text:'حلول تقنية المعلومات وأنظمة المعلومات ومعالجة البيانات للقطاعين الحكومي والخاص.', tags:['أنظمة معلومات','معالجة البيانات','حلول تقنية'],
+      art:`<circle class="draw" pathLength="1" cx="100" cy="100" r="22"/>
+           <circle class="draw" pathLength="1" cx="40" cy="50" r="10"/>
+           <circle class="draw" pathLength="1" cx="165" cy="55" r="10"/>
+           <circle class="draw" pathLength="1" cx="45" cy="160" r="10"/>
+           <circle class="draw" pathLength="1" cx="160" cy="165" r="10"/>
+           <path class="draw" pathLength="1" d="M48 57 84 86M157 62 117 88M53 153 84 116M152 157 116 116M40 60V150M165 65V155"/>
+           <circle class="soft" cx="100" cy="100" r="70"/>`},
+    {name:'الاستثمارات المالية', text:'إدارة استثمارات المجموعة وتوجيهها نحو قطاعات النمو في المملكة، ودعم توسّع شركاتها.', tags:['محفظة استثمارية','نمو مستدام'],
+      art:`<path class="soft" d="M20 180H185M20 180V20"/>
+           <path class="draw" pathLength="1" d="M40 180V140H62V180"/>
+           <path class="draw" pathLength="1" d="M80 180V115H102V180"/>
+           <path class="draw" pathLength="1" d="M120 180V85H142V180"/>
+           <path class="draw" pathLength="1" d="M160 180V50H182V180"/>
+           <polyline class="draw" pathLength="1" points="30,130 75,100 115,72 170,30"/>
+           <path class="draw" pathLength="1" d="M155 28 172 29 170 46"/>`},
+    {name:'الصناعات البتروكيماوية', text:'المشاركة في مشاريع الصناعات البتروكيماوية وتقديم خدمات الهندسة الإجرائية.', tags:['هندسة إجرائية','مشاريع صناعية'],
+      art:`<path class="draw" pathLength="1" d="M100 45 148 72V128L100 155 52 128V72Z"/>
+           <circle class="draw" pathLength="1" cx="100" cy="100" r="28"/>
+           <path class="draw" pathLength="1" d="M100 45V15M148 72 174 57M148 128 174 143M100 155V185M52 128 26 143M52 72 26 57"/>
+           <circle class="draw" pathLength="1" cx="100" cy="12" r="5"/>
+           <circle class="draw" pathLength="1" cx="178" cy="146" r="5"/>
+           <circle class="draw" pathLength="1" cx="22" cy="54" r="5"/>`},
+    {name:'الصناعات البترولية', text:'أعمال وخدمات تدعم قطاع النفط في المملكة، من التنفيذ إلى التشغيل.', tags:['قطاع النفط','خدمات صناعية'],
+      art:`<path class="draw" pathLength="1" d="M100 25C100 25 58 85 58 115A42 42 0 0 0 142 115C142 85 100 25 100 25Z"/>
+           <path class="draw" pathLength="1" d="M80 118A22 22 0 0 0 98 138"/>
+           <path class="soft" d="M15 185H185M35 172H165"/>
+           <path class="draw" pathLength="1" d="M30 185 45 165H60L75 185"/>
+           <path class="draw" pathLength="1" d="M125 185 140 165H155L170 185"/>`}
+  ];
+  const list = document.getElementById('fieldList'), art = document.getElementById('fieldArt'), copy = document.getElementById('fieldCopy');
+  list.innerHTML = fields.map((f,i) => `<li role="presentation"><button class="field-btn" role="tab" id="tab${i}" aria-controls="fieldStage" aria-selected="${i===0}" tabindex="${i===0?0:-1}" data-i="${i}"><span class="dot"></span>${f.name}</button></li>`).join('');
+  const tabs = [...list.querySelectorAll('.field-btn')];
+  let cur = -1;
+  function show(i){
+    if (i === cur) return; cur = i;
+    tabs.forEach((t,j) => {t.setAttribute('aria-selected', j===i); t.tabIndex = j===i?0:-1;});
+    const f = fields[i];
+    art.innerHTML = `<svg viewBox="0 0 200 200">${f.art}</svg>`;
+    copy.innerHTML = `<h3>${f.name}</h3><p>${f.text}</p><div class="field-tags">${f.tags.map(t=>`<span>${t}</span>`).join('')}</div>`;
+    copy.classList.remove('swap'); void copy.offsetWidth; copy.classList.add('swap');
+    document.getElementById('fieldStage').setAttribute('aria-labelledby','tab'+i);
+  }
+  tabs.forEach((t,i) => {
+    t.addEventListener('click', () => show(i));
+    t.addEventListener('mouseenter', () => { if (matchMedia('(hover:hover)').matches) show(i); });
+    t.addEventListener('keydown', e => {
+      const n = tabs.length;
+      let j = null;
+      if (e.key === 'ArrowDown' || e.key === 'ArrowLeft') j = (i+1)%n;
+      if (e.key === 'ArrowUp' || e.key === 'ArrowRight') j = (i-1+n)%n;
+      if (j !== null){ e.preventDefault(); tabs[j].focus(); show(j); }
+    });
+  });
+  show(0);
+
+  /* ---------- products band ---------- */
+  const items = ['الخرسانة مسبقة الصب','ألواح البوليسترين','منتجات الألمنيوم','الهندسة الإجرائية','المقاولات الكهروميكانيكية','معالجة البيانات','إنشاء المباني','أنظمة المعلومات'];
+  const group = `<div class="band-group" aria-hidden="ARIA">${items.map(t=>`<span class="band-item">${t}</span><svg class="band-star" viewBox="0 0 100 100" style="color:var(--sun)"><use href="#star"/></svg>`).join('')}</div>`;
+  document.getElementById('band').innerHTML = group.replace('ARIA','false') + group.replace('ARIA','true');
+
+  /* ---------- plates: light follows cursor ---------- */
+  document.querySelectorAll('.plate').forEach(p => p.addEventListener('pointermove', e => {
+    const r = p.getBoundingClientRect();
+    p.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+    p.style.setProperty('--my', (e.clientY - r.top) + 'px');
+  }));
+
+  /* ---------- dotted kingdom map ---------- */
+  const poly = [[34.95,29.35],[36.05,29.2],[37.0,30.0],[38.0,30.5],[37.0,31.5],[39.2,32.15],[40.4,31.9],[42.0,31.1],[44.7,29.2],[46.5,29.1],[47.7,28.5],[48.4,28.5],[48.8,27.7],[49.3,27.1],[50.1,26.6],[50.2,25.7],[50.8,24.75],[51.6,24.25],[52.0,23.0],[55.0,22.7],[55.6,22.0],[55.0,20.0],[52.0,19.0],[49.1,18.6],[48.2,18.2],[47.0,17.0],[46.4,17.2],[44.0,17.4],[43.3,17.6],[42.8,16.4],[42.3,17.2],[41.2,18.6],[40.6,19.8],[39.6,21.0],[39.1,21.7],[38.6,23.5],[37.5,24.3],[37.2,25.0],[36.6,25.8],[35.6,27.3],[35.1,28.1],[34.6,28.1]];
+  const S = 26, LON0 = 34, LAT0 = 33;
+  const P = ([lon,lat]) => [(lon-LON0)*S, (LAT0-lat)*S];
+  const inside = (x,y) => { let c=false; for(let i=0,j=poly.length-1;i<poly.length;j=i++){const [xi,yi]=poly[i],[xj,yj]=poly[j]; if(((yi>y)!=(yj>y)) && (x < (xj-xi)*(y-yi)/(yj-yi)+xi)) c=!c;} return c; };
+  const cities = {
+    jed:{name:'جدة', sub:'المقر الرئيسي', ll:[39.19,21.54], dx:-22, anchor:'end'},
+    ruh:{name:'الرياض', sub:'فرع', ll:[46.72,24.71], dx:22, anchor:'start'},
+    dmm:{name:'الدمام', sub:'فرع', ll:[50.10,26.43], dx:22, anchor:'start'}
+  };
+  let dots = '';
+  const step = .42;
+  for (let lat = 32.4; lat > 16; lat -= step){
+    for (let lon = 34.4; lon < 56; lon += step){
+      if (!inside(lon, lat)) continue;
+      const [x,y] = P([lon,lat]);
+      let lit = '';
+      for (const c of Object.values(cities)){ if (Math.hypot(lon-c.ll[0], lat-c.ll[1]) < 1.6) lit = ' lit'; }
+      const op = lit ? (0.25 + Math.random()*0.35).toFixed(2) : '';
+      dots += `<circle class="dot${lit}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="2.2"${op?` style="opacity:${op}"`:''}/>`;
+    }
+  }
+  const cp = k => P(cities[k].ll);
+  const arc = (a,b,lift) => { const [x1,y1]=cp(a),[x2,y2]=cp(b); const mx=(x1+x2)/2, my=(y1+y2)/2 - lift; return `M${x1} ${y1}Q${mx} ${my} ${x2} ${y2}`; };
+  const arcs = [arc('jed','ruh',90), arc('ruh','dmm',40), arc('jed','dmm',170)];
+  const cityMarks = Object.entries(cities).map(([k,c]) => { const [x,y]=P(c.ll); return `
+    <g class="city" data-city="${k}">
+      <circle class="city-halo" cx="${x}" cy="${y}" r="38"/>
+      <circle class="ring" cx="${x}" cy="${y}" r="12"/><circle class="ring r2" cx="${x}" cy="${y}" r="12"/>
+      <circle class="city-core" cx="${x}" cy="${y}" r="4.5"/>
+      <text x="${x + c.dx}" y="${y - 4}" text-anchor="${c.anchor}">${c.name}</text>
+      <text class="sub" x="${x + c.dx}" y="${y + 13}" text-anchor="${c.anchor}">${c.sub}</text>
+    </g>`;}).join('');
+  const mapW = (56.2-LON0)*S, mapH = (LAT0-15.6)*S;
+  document.getElementById('map').innerHTML = `
+    <svg viewBox="0 0 ${mapW} ${mapH}" style="direction:ltr" role="img" aria-label="خريطة المملكة العربية السعودية تُظهر مكاتب المجموعة في جدة والرياض والدمام">
+      <defs><radialGradient id="halo"><stop offset="0" stop-color="#FFE2AE" stop-opacity=".55"/><stop offset=".4" stop-color="#E8C58E" stop-opacity=".18"/><stop offset="1" stop-color="#E8C58E" stop-opacity="0"/></radialGradient></defs>
+      <g>${dots}</g>
+      ${arcs.map(d=>`<path class="arc" d="${d}"/>`).join('')}
+      ${arcs.map((d,i)=>`<path class="pulse" pathLength="1" d="${d}">${reduce?'':`<animate attributeName="stroke-dashoffset" from="1.07" to="0" dur="${3.2+i*.9}s" begin="${i*.7}s" repeatCount="indefinite"/>`}</path>`).join('')}
+      ${cityMarks}
+    </svg>`;
+  const link = (k, on) => {
+    document.querySelectorAll(`[data-city="${k}"]`).forEach(el => el.classList.toggle('on', on));
+  };
+  document.querySelectorAll('.office').forEach(o => {
+    o.addEventListener('mouseenter', () => link(o.dataset.city, true));
+    o.addEventListener('mouseleave', () => link(o.dataset.city, false));
+  });
+})();
+</script>
+</body>
+</html>
